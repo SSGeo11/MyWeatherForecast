@@ -22,9 +22,8 @@ object Constants {
         "thunderstorm-with-rain" to R.drawable.thunderstorm,
         "thunderstorm-with-hail" to R.drawable.thunderstorm
         )
-
-
-
-
-
+    val defaultCities = mutableListOf<City>(
+        City(0, "Yakutsk", 62.027220, 129.732181),
+        City(1, "Moscow", 55.755863, 37.617700),
+        City(2, "St.Peterburg", 59.938951, 30.315635))
 }

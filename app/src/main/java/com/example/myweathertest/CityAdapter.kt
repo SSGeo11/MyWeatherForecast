@@ -6,10 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myweathertest.ApiFactory.weatherApi
 import com.example.myweathertest.databinding.CityItemBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -79,7 +76,7 @@ class CityAdapter: RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
         val context = holder.itemView.context
         CoroutineScope(Dispatchers.IO).launch {
             val weather = weatherApi.getWeatherForecast(city.lat, city.lon)
-            runCatching {
+            withContext(Dispatchers.Main) {
                 holder.binding.cityTempTV.text = weather.fact.temp.toString()
             }
         }
