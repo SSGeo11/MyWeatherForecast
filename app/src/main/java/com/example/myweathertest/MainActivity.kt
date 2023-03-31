@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.myweathertest.ApiFactory.weatherApi
 import com.example.myweathertest.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
@@ -56,7 +57,18 @@ class MainActivity : AppCompatActivity() {
 
         adapter.setOnItemClickListener(object : CityAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                Toast.makeText(this@MainActivity, "$position", Toast.LENGTH_SHORT).show()
+                binding.cityNameDetailsTV.text = adapter.data[position].name
+                CoroutineScope(Dispatchers.IO).launch {
+                    val weather = weatherApi.getWeatherForecast(adapter.data[position].lat, adapter.data[position].lon)
+                    runOnUiThread {
+                        binding.cityTempDetailsTV.text = weather.fact.temp.toString()
+                        binding.conditionDetailsTV.text = weather.fact.condition
+                        binding.feelsLikeDetailsTV.text = weather.fact.feels_like.toString()
+                        Glide.with(this@MainActivity)
+                            .load(Constants.condition.getValue(weather.fact.condition))
+                            .into(binding.iconDetailsIV)
+                    }
+                }
             }
         })
 
