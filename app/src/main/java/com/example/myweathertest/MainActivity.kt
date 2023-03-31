@@ -3,6 +3,7 @@ package com.example.myweathertest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myweathertest.ApiFactory.weatherApi
 import com.example.myweathertest.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,20 +27,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val weatherClient = OkHttpClient.Builder().addInterceptor { chain ->
-            val request = chain.request().newBuilder()
-                .addHeader("X-Yandex-API-Key", "1ee6e256-0ed5-435c-9b27-0cf907e9000c")
-                .build()
-            chain.proceed(request)
-        }.build()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.weather.yandex.ru/")
-            .client(weatherClient)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val weatherApi = retrofit.create(WeatherApi::class.java)
 
         binding.getB.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {

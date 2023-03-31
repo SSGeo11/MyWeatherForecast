@@ -4,7 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myweathertest.ApiFactory.weatherApi
 import com.example.myweathertest.databinding.CityItemBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import kotlin.coroutines.coroutineContext
 
 class PersonDiffUtil(
     private val oldList: List<City>,
@@ -26,6 +35,7 @@ class PersonDiffUtil(
 }
 
 class CityAdapter: RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
+
 
     var data: List<City> = emptyList()
         set(newValue) {
@@ -56,6 +66,16 @@ class CityAdapter: RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
         val city = data[position]
         val context = holder.itemView.context
+        val forecast : WeatherForecast
+        CoroutineScope(Dispatchers.IO).launch {
+            val weather = weatherApi.getWeatherForecast(city.lat, city.lon)
+            runCatching {
+                holder.binding.cityTempTV.text = weather.fact.temp.toString()
+            }
+        }
+
+
+
 
         with(holder.binding) {
             holder.binding.cityNameTV.text = city.name
