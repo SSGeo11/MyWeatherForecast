@@ -2,6 +2,7 @@ package com.example.myweathertest
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -67,6 +68,35 @@ class MainActivity : AppCompatActivity() {
                         Glide.with(this@MainActivity)
                             .load(Constants.condition.getValue(weather.fact.condition))
                             .into(binding.iconDetailsIV)
+
+                        binding.morningNameTV.text = "Morning"
+                        Log.i("Test", weather.toString())
+                        binding.morningTempTV.text = weather.forecasts[0].parts.morning.temp_avg.toString()
+                        binding.morningFeelsLikeTV.text = weather.forecasts[0].parts.morning.feels_like.toString()
+                        Glide.with(this@MainActivity)
+                            .load(Constants.condition.getValue(weather.forecasts[0].parts.morning.condition))
+                            .into(binding.morningIconIV)
+
+                        binding.dayNameTV.text = "Day"
+                        binding.dayTempTV.text = weather.forecasts[0].parts.day.temp_avg.toString()
+                        binding.dayFeelsLikeTV.text = weather.forecasts[0].parts.day.feels_like.toString()
+                        Glide.with(this@MainActivity)
+                            .load(Constants.condition.getValue(weather.forecasts[0].parts.day.condition))
+                            .into(binding.dayIconIV)
+
+                        binding.eveningNameTV.text = "Evening"
+                        binding.eveningTempTV.text = weather.forecasts[0].parts.evening.temp_avg.toString()
+                        binding.eveningFeelsLikeTV.text = weather.forecasts[0].parts.evening.feels_like.toString()
+                        Glide.with(this@MainActivity)
+                            .load(Constants.condition.getValue(weather.forecasts[0].parts.evening.condition))
+                            .into(binding.eveningIconIV)
+
+                        binding.nightNameTV.text = "Night"
+                        binding.nightTempTV.text = weather.forecasts[0].parts.night.temp_avg.toString()
+                        binding.nightFeelsLikeTV.text = weather.forecasts[0].parts.night.feels_like.toString()
+                        Glide.with(this@MainActivity)
+                            .load(Constants.condition.getValue(weather.forecasts[0].parts.night.condition))
+                            .into(binding.nightIconIV)
                     }
                 }
             }

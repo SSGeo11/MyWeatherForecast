@@ -4,7 +4,7 @@ object Constants {
     val condition = mapOf(
         "clear" to R.drawable.clear,
         "partly-cloudy" to R.drawable.partly_cloudy,
-        "cloudy " to R.drawable.ic_cloudy ,
+        "cloudy" to R.drawable.ic_cloudy ,
         "overcast" to R.drawable.overcast,
         "drizzle" to R.drawable.light_rain,
         "light-rain" to R.drawable.light_rain,

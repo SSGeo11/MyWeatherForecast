@@ -1,7 +1,9 @@
 package com.example.myweathertest
 
-data class Fact(
-    val temp: Int,
+data class DayPart(
+    val temp_min: Int,
+    val temp_max: Int,
+    val temp_avg: Int,
     val feels_like: Int,
     val icon: String,
     val condition: String,

@@ -15,7 +15,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.coroutines.coroutineContext
 
-class PersonDiffUtil(
+class CityDiffUtil(
 
     private val oldList: List<City>,
     private val newList: List<City>
@@ -23,15 +23,15 @@ class PersonDiffUtil(
     override fun getOldListSize(): Int = oldList.size
     override fun getNewListSize(): Int = newList.size
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val oldPerson = oldList[oldItemPosition]
-        val newPerson = newList[newItemPosition]
-        return oldPerson.id == newPerson.id
+        val oldCity = oldList[oldItemPosition]
+        val newCity = newList[newItemPosition]
+        return oldCity.id == newCity.id
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val oldPerson = oldList[oldItemPosition]
-        val newPerson = newList[newItemPosition]
-        return oldPerson == newPerson
+        val oldCity = oldList[oldItemPosition]
+        val newCity = newList[newItemPosition]
+        return oldCity == newCity
     }
 }
 
@@ -51,10 +51,10 @@ class CityAdapter: RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
 
     var data: List<City> = emptyList()
         set(newValue) {
-            val personDiffUtil = PersonDiffUtil(field, newValue)
-            val personDiffUtilResult = DiffUtil.calculateDiff(personDiffUtil)
+            val cityDiffUtil = CityDiffUtil(field, newValue)
+            val cityDiffUtilResult = DiffUtil.calculateDiff(cityDiffUtil)
             field = newValue
-            personDiffUtilResult.dispatchUpdatesTo(this@CityAdapter)
+            cityDiffUtilResult.dispatchUpdatesTo(this@CityAdapter)
         }
 
     class CityViewHolder(val binding: CityItemBinding, listener: onItemClickListener) : RecyclerView.ViewHolder(binding.root){
