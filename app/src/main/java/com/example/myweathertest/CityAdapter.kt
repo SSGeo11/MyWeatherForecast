@@ -16,6 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.coroutines.coroutineContext
 
 class PersonDiffUtil(
+
     private val oldList: List<City>,
     private val newList: List<City>
 ) : DiffUtil.Callback() {
@@ -36,6 +37,17 @@ class PersonDiffUtil(
 
 class CityAdapter: RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
 
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+        mListener = listener
+    }
+
+
 
     var data: List<City> = emptyList()
         set(newValue) {
@@ -44,38 +56,33 @@ class CityAdapter: RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
             field = newValue
             personDiffUtilResult.dispatchUpdatesTo(this@CityAdapter)
         }
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder)
-     */
-    class CityViewHolder(val binding: CityItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-    // Return the size of your dataset (invoked by the layout manager)
+    class CityViewHolder(val binding: CityItemBinding, listener: onItemClickListener) : RecyclerView.ViewHolder(binding.root){
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
+    }
+
     override fun getItemCount(): Int = data.size
 
-    // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {
-        // Create a new view, which defines the UI of the list item
         val inflater = LayoutInflater.from(parent.context)
         val binding = CityItemBinding.inflate(inflater, parent, false)
 
-        return CityViewHolder(binding)
+        return CityViewHolder(binding, mListener)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
         val city = data[position]
         val context = holder.itemView.context
-        val forecast : WeatherForecast
         CoroutineScope(Dispatchers.IO).launch {
             val weather = weatherApi.getWeatherForecast(city.lat, city.lon)
             runCatching {
                 holder.binding.cityTempTV.text = weather.fact.temp.toString()
             }
         }
-
-
-
 
         with(holder.binding) {
             holder.binding.cityNameTV.text = city.name
