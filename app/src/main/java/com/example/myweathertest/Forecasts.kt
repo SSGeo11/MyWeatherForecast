@@ -8,7 +8,7 @@ data class Forecasts(
     val temp_avg: Int,
     val feels_like: Int,
     val icon: String,
-    val condition: String,
+    val condition: String = "clear",
     val wind_speed: Double,
     val wind_dir: String,
     val pressure_mm: Int,

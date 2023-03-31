@@ -1,9 +1,12 @@
 package com.example.myweathertest
 
+import android.icu.text.CaseMap.Title
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +23,7 @@ import com.example.myweathertest.CityService
 
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CityListFragment.Callbacks, CityDetailsFragment.Callbacks {
 
     lateinit var binding: ActivityMainBinding
     private lateinit var adapter: CityAdapter
@@ -31,6 +34,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
+        title = ""
 
+
+
+    }
+
+    override fun onDataSelected(data: String) {
+        val toolbarTitle: TextView = findViewById(R.id.toolbar_title)
+        toolbarTitle.text = data
+    }
+
+    override fun onDataRemove() {
+        val toolbarTitle: TextView = findViewById(R.id.toolbar_title)
+        toolbarTitle.text = ""
     }
 }

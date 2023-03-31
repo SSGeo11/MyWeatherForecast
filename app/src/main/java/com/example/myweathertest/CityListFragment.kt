@@ -1,5 +1,6 @@
 package com.example.myweathertest
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -29,6 +30,9 @@ class CityListFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_city_list, container, false)
     }
+    interface Callbacks : CityDetailsFragment.Callbacks {
+        fun onDataSelected(data: String)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,10 +59,27 @@ class CityListFragment : Fragment() {
         adapter.setOnItemClickListener(object : CityAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 bundle.putInt("Position", position)
+                putData(adapter.data[position].name)
                 Log.i("Test", position.toString())
                 findNavController().navigate(R.id.cityDetailsFragment, bundle)
             }
         })
+    }
+    private var callbacks: Callbacks? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callbacks = context as? Callbacks
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        callbacks = null
+    }
+
+    private fun putData(data: String) {
+        // Передайте данные в активность с помощью интерфейса обратного вызова
+        callbacks?.onDataSelected(data)
     }
 
 }
