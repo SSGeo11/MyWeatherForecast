@@ -125,7 +125,7 @@ class CityDetailsFragment : Fragment() {
                 nightFeelsLikeTV.text = weather.forecasts[1].parts.night.feels_like.toString()
                 nightWindTV.text = "${weather.forecasts[1].parts.night.wind_speed} м/с\n${Constants.windDir.getValue(weather.forecasts[1].parts.night.wind_dir)}"
                 Glide.with(this@CityDetailsFragment)
-                    .load(Constants.conditionIcon.getValue(weather.forecasts[1].parts.night.condition))
+                    .load(Constants.conditionIconNight.getValue(weather.forecasts[1].parts.night.condition))
                     .into(nightIconTV)
 
             }

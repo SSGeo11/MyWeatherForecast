@@ -1,6 +1,28 @@
 package com.example.myweathertest
 
 object Constants {
+    val conditionIconNight = mapOf(
+        "clear" to R.drawable.clear_night,
+        "partly-cloudy" to R.drawable.partly_cloudy_night,
+        "cloudy" to R.drawable.ic_cloudy_night ,
+        "overcast" to R.drawable.overcast_night,
+        "drizzle" to R.drawable.light_rain_night,
+        "light-rain" to R.drawable.light_rain_night,
+        "rain" to R.drawable.rain,
+        "moderate-rain" to R.drawable.moderate_rain,
+        "heavy-rain" to R.drawable.moderate_rain,
+        "showers" to R.drawable.moderate_rain,
+        "continuous-heavy-rain" to R.drawable.moderate_rain,
+        "wet-snow" to R.drawable.wet_snow,
+        "light-snow" to R.drawable.light_snow,
+        "snow" to R.drawable.snow,
+        "snow-showers" to R.drawable.snow_showers,
+        "hail" to R.drawable.hail,
+        "thunderstorm" to R.drawable.thunderstorm,
+        "thunderstorm-with-rain" to R.drawable.thunderstorm,
+        "thunderstorm-with-hail" to R.drawable.thunderstorm
+    )
+
     val conditionIcon = mapOf(
         "clear" to R.drawable.clear,
         "partly-cloudy" to R.drawable.partly_cloudy,
