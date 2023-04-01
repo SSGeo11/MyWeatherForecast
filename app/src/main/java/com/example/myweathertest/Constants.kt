@@ -44,9 +44,9 @@ object Constants {
         "thunderstorm-with-hail" to R.string.thunderstorm_with_hail
     )
     val defaultCities = mutableListOf<City>(
-        City(0, "Yakutsk", 62.027220, 129.732181),
-        City(1, "Moscow", 55.755863, 37.617700),
-        City(2, "St.Peterburg", 59.938951, 30.315635))
+        City(0, "Якутск", 62.027220, 129.732181),
+        City(1, "Москва", 55.755863, 37.617700),
+        City(2, "Санкт-Петербург", 59.938951, 30.315635))
 
     val windDir = mapOf(
         "nw" to "СВ",

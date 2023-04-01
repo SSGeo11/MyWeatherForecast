@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:background="#C1C1C1"
+        android:background="?attr/colorPrimaryContainer"
         android:orientation="horizontal"
         android:gravity="center"
         android:padding="10dp">
@@ -19,10 +19,11 @@
             android:layout_width="120dp"
             android:layout_height="match_parent"
             android:layout_marginRight="10dp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="?attr/colorOnPrimaryContainer"/>
 
         <LinearLayout
-            android:layout_width="86dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:orientation="vertical"></LinearLayout>
 
@@ -32,6 +33,7 @@
             android:layout_height="25dp"
             android:layout_gravity="right"
             android:layout_marginHorizontal="10dp"
+            android:textColor="?attr/colorOnPrimaryContainer"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
@@ -40,6 +42,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="right"
             android:gravity="center"
+            android:textColor="?attr/colorOnPrimaryContainer"
             android:text="TextView" />
 
     </LinearLayout>
