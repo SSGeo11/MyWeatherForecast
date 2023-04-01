@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="242dp"
+            android:layout_height="203dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -23,8 +23,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="?attr/colorPrimary"
-                android:textStyle="bold"
-                android:textSize="34sp" />
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/cityFeelsLikeDetailsTV"
@@ -44,10 +44,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_height="179dp"
             android:layout_marginHorizontal="5dp"
             android:background="?attr/colorSecondaryContainer"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -61,8 +61,8 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor="?attr/colorOnSecondaryContainer"
-                    android:text="@string/morning" />
+                    android:text="@string/morning"
+                    android:textColor="?attr/colorOnSecondaryContainer" />
 
                 <LinearLayout
                     android:layout_width="80dp"
@@ -82,8 +82,8 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="20sp"
                     android:textColor="?attr/colorOnSecondaryContainer"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -112,8 +112,8 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor="?attr/colorOnSecondaryContainer"
-                    android:text="@string/day" />
+                    android:text="@string/day"
+                    android:textColor="?attr/colorOnSecondaryContainer" />
 
                 <LinearLayout
                     android:layout_width="80dp"
@@ -133,9 +133,9 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="20sp"
                     android:textColor="?attr/colorOnSecondaryContainer"
-                    android:textStyle="bold"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/dayFeelsLikeTV"
@@ -163,8 +163,8 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor="?attr/colorOnSecondaryContainer"
-                    android:text="@string/evening" />
+                    android:text="@string/evening"
+                    android:textColor="?attr/colorOnSecondaryContainer" />
 
                 <LinearLayout
                     android:layout_width="80dp"
@@ -184,9 +184,9 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="20sp"
                     android:textColor="?attr/colorOnSecondaryContainer"
-                    android:textStyle="bold"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/eveningFeelsLikeTV"
@@ -214,8 +214,8 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor="?attr/colorOnSecondaryContainer"
-                    android:text="@string/night" />
+                    android:text="@string/night"
+                    android:textColor="?attr/colorOnSecondaryContainer" />
 
                 <LinearLayout
                     android:layout_width="80dp"
@@ -235,16 +235,15 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="20sp"
                     android:textColor="?attr/colorOnSecondaryContainer"
-                    android:textStyle="bold"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/nightFeelsLikeTV"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    />
+                    android:gravity="center" />
 
                 <TextView
                     android:id="@+id/nightWindTV"
